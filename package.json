@@ -76,7 +76,7 @@
     "capabilities": {
         "untrustedWorkspaces": {
             "supported": "limited",
-            "description": "In restricted mode clangd.path and clangd.arguments are not respected.",
+            "description": "%clang.capabilities.untrustedWorkspaces%",
             "restrictedConfigurations": [
                 "clangd.path",
                 "clangd.arguments"

@@ -31,5 +31,6 @@
     "clang.commands.clangd.ast.close": "Close AST view",
     "clang.commands.clangd.projectConfig": "Open project configuration file",
     "clang.commands.clangd.userConfig": "Open user configuration file",
-    "clang.commands.clangd.inlayHints.toggle": "Toggle inlay hints"
+    "clang.commands.clangd.inlayHints.toggle": "Toggle inlay hints",
+    "clang.capabilities.untrustedWorkspaces": "In restricted mode clangd.path and clangd.arguments are not respected."
 }

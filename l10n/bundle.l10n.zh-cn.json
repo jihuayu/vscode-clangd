@@ -20,7 +20,7 @@
   "Yes": "是",
   "Yes, always": "是，始终如此",
   "clangd configuration file at '{fsPath}' has been changed. Do you want to restart it?": "位于 '{fsPath}' 的 clangd 配置文件已更改。您是否要重新启动？",
-  "No AST node at selection": "选择项没有 AST 节点",
+  "No AST node at selection": "所选项没有 AST 节点",
   "You have both the Microsoft C++ (cpptools) extension and clangd extension enabled. The Microsoft IntelliSense features conflict with clangd's code completion, diagnostics etc.":
   "您同时启用了 Microsoft C++(cpptools) 扩展和 clangd 扩展。Microsoft IntelliSense 功能与 clangd 的代码补全、诊断等功能存在冲突。",
   "Disable IntelliSense": "禁用 IntelliSense",
