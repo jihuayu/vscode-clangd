@@ -33,6 +33,7 @@
         "onCommand:clangd.update"
     ],
     "main": "./out/bundle",
+    "l10n": "./l10n",
     "scripts": {
         "esbuild": "esbuild ./src/extension.ts --bundle --outfile=out/bundle.js --external:vscode --format=cjs --platform=node",
         "vscode:prepublish": "npm run check-ts && npm run esbuild -- --minify --keep-names",

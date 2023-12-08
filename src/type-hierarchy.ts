@@ -93,7 +93,7 @@ class TypeHierarchyTreeItem extends vscode.TreeItem {
     this.command = {
       arguments: [item],
       command: 'clangd.typeHierarchy.gotoItem',
-      title: 'Go to'
+      title: vscode.l10n.t('Go to')
     };
   }
 }
@@ -335,7 +335,7 @@ class TypeHierarchyProvider implements
           });
     } else {
       vscode.window.showInformationMessage(
-          'No type hierarchy available for selection');
+        vscode.l10n.t('No type hierarchy available for selection'));
     }
   }
 

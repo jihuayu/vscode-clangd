@@ -11,22 +11,22 @@ import * as config from './config';
 
 // Returns the clangd path to be used, or null if clangd is not installed.
 export async function activate(
-    context: ClangdContext, globalStoragePath: string): Promise<string|null> {
+  context: ClangdContext, globalStoragePath: string): Promise<string|null> {
   // If the workspace overrides clangd.path, give the user a chance to bless it.
   await config.get<string>('path');
 
   const ui = new UI(context, globalStoragePath);
   context.subscriptions.push(vscode.commands.registerCommand(
-      'clangd.install', async () => common.installLatest(ui)));
+    'clangd.install', async () => common.installLatest(ui)));
   context.subscriptions.push(vscode.commands.registerCommand(
-      'clangd.update', async () => common.checkUpdates(true, ui)));
+    'clangd.update', async () => common.checkUpdates(true, ui)));
   const status = await common.prepare(ui, config.get<boolean>('checkUpdates'));
   return status.clangdPath;
 }
 
 class UI {
   constructor(private context: ClangdContext,
-              private globalStoragePath: string) {}
+    private globalStoragePath: string) {}
 
   get storagePath(): string { return this.globalStoragePath; }
   async choose(prompt: string, options: string[]): Promise<string|undefined> {
@@ -41,7 +41,7 @@ class UI {
     return Promise.resolve(vscode.window.withProgress(opts, () => result));
   }
   progress<T>(title: string, cancel: AbortController|null,
-              body: (progress: (fraction: number) => void) => Promise<T>) {
+    body: (progress: (fraction: number) => void) => Promise<T>) {
     const opts = {
       location: vscode.ProgressLocation.Notification,
       title: title,
@@ -64,15 +64,15 @@ class UI {
   info(s: string) { vscode.window.showInformationMessage(s); }
   command(name: string, body: () => any) {
     this.context.subscriptions.push(
-        vscode.commands.registerCommand(name, body));
+      vscode.commands.registerCommand(name, body));
   }
 
   async shouldReuse(release: string): Promise<boolean|undefined> {
-    const message = `clangd ${release} is already installed!`;
-    const use = 'Use the installed version';
-    const reinstall = 'Delete it and reinstall';
+    const message = vscode.l10n.t(`clangd {version} is already installed!`, { version: release });
+    const use = vscode.l10n.t('Use the installed version');
+    const reinstall = vscode.l10n.t('Delete it and reinstall');
     const response =
-        await vscode.window.showInformationMessage(message, use, reinstall);
+      await vscode.window.showInformationMessage(message, use, reinstall);
     if (response === use) {
       // Find clangd within the existing directory.
       return true;
@@ -86,23 +86,22 @@ class UI {
   }
 
   async promptReload(message: string) {
-    if (await vscode.window.showInformationMessage(message, 'Reload window'))
+    if (await vscode.window.showInformationMessage(message, vscode.l10n.t('Reload window')))
       vscode.commands.executeCommand('workbench.action.reloadWindow');
   }
 
   async showHelp(message: string, url: string) {
-    if (await vscode.window.showInformationMessage(message, 'Open website'))
+    if (await vscode.window.showInformationMessage(message, vscode.l10n.t('Open website')))
       vscode.env.openExternal(vscode.Uri.parse(url));
   }
 
   async promptUpdate(oldVersion: string, newVersion: string) {
-    const message = 'An updated clangd language server is available.\n ' +
-                    `Would you like to upgrade to clangd ${newVersion}? ` +
-                    `(from ${oldVersion})`;
-    const update = `Install clangd ${newVersion}`;
-    const dontCheck = 'Don\'t ask again';
+    const message = vscode.l10n.t('An updated clangd language server is available.\n ') +
+      vscode.l10n.t(`Would you like to upgrade to clangd {newVersion}? (from {oldVersion})`, newVersion, oldVersion)
+    const update = vscode.l10n.t(`Install clangd {newVersion}`, newVersion);
+    const dontCheck = vscode.l10n.t('Don\'t ask again');
     const response =
-        await vscode.window.showInformationMessage(message, update, dontCheck);
+      await vscode.window.showInformationMessage(message, update, dontCheck);
     if (response === update) {
       common.installLatest(this);
     } else if (response === dontCheck) {
@@ -114,11 +113,11 @@ class UI {
     const p = this.clangdPath;
     let message = '';
     if (p.indexOf(path.sep) < 0) {
-      message += `The '${p}' language server was not found on your PATH.\n`;
+      message += vscode.l10n.t(`The '{path}' language server was not found on your PATH.\n`, { path: p });
     } else {
-      message += `The clangd binary '${p}' was not found.\n`;
+      message += vscode.l10n.t(`The clangd binary '{path}' was not found.\n`, { path: p });
     }
-    message += `Would you like to download and install clangd ${version}?`;
+    message += vscode.l10n.t(`Would you like to download and install clangd {version}?`, version);
     if (await vscode.window.showInformationMessage(message, 'Install'))
       common.installLatest(this);
   }
@@ -128,7 +127,7 @@ class UI {
     // Backwards compatibility: if it's a relative path with a slash, interpret
     // relative to project root.
     if (!path.isAbsolute(p) && p.includes(path.sep) &&
-        vscode.workspace.rootPath !== undefined)
+      vscode.workspace.rootPath !== undefined)
       p = path.join(vscode.workspace.rootPath, p);
     return p;
   }

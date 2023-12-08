@@ -36,18 +36,20 @@ export async function activate(context: vscode.ExtensionContext) {
         const cppToolsEnabled =
             cppToolsConfiguration.get<string>('intelliSenseEngine');
         if (cppToolsEnabled?.toLowerCase() !== 'disabled') {
+          const disable = vscode.l10n.t('Disable IntelliSense')
+          const neverShow = vscode.l10n.t('Never show this warning')
+          const message = vscode.l10n.t(
+            'You have both the Microsoft C++ (cpptools) extension and ' +
+            'clangd extension enabled. The Microsoft IntelliSense features ' +
+            'conflict with clangd\'s code completion, diagnostics etc.')
           vscode.window
-              .showWarningMessage(
-                  'You have both the Microsoft C++ (cpptools) extension and ' +
-                      'clangd extension enabled. The Microsoft IntelliSense features ' +
-                      'conflict with clangd\'s code completion, diagnostics etc.',
-                  'Disable IntelliSense', 'Never show this warning')
+              .showWarningMessage(message, disable, neverShow)
               .then(selection => {
-                if (selection == 'Disable IntelliSense') {
+                if (selection == disable) {
                   cppToolsConfiguration.update(
                       'intelliSenseEngine', 'disabled',
                       vscode.ConfigurationTarget.Global);
-                } else if (selection == 'Never show this warning') {
+                } else if (selection == neverShow) {
                   vscode.workspace.getConfiguration('clangd').update(
                       'detectExtensionConflicts', false,
                       vscode.ConfigurationTarget.Global);
