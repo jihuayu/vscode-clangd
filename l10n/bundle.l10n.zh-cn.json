@@ -1,0 +1,28 @@
+{
+  "Go to": "转到",
+  "No type hierarchy available for selection": "没有可用于选择的类型层次结构",
+  "Didn't find a corresponding file.": "未找到相应的文件。",
+  "No project is open": "没有打开的项目",
+  "Couldn't get global configuration directory": "无法获取全局配置目录",
+  "clangd {version} is already installed!": "clangd {version} 已安装！",
+  "Use the installed version": "使用已安装的版本",
+  "Delete it and reinstall": "删除并重新安装",
+  "Reload window": "重新加载窗口",
+  "Open website": "打开网站",
+  "An updated clangd language server is available.\n ": "有可用的更新的 clangd 语言服务器。\n ",
+  "Would you like to upgrade to clangd {newVersion}? (from {oldVersion})": "您是否要升级到 clangd {newVersion}？（当前版本为 {oldVersion}）",
+  "Install clangd {newVersion}": "安装 clangd {newVersion}",
+  "Don't ask again": "不再询问",
+  "The '{path}' language server was not found on your PATH.\n": "在您的 PATH 中未找到 '{path}' 语言服务器。\n",
+  "The clangd binary '{path}' was not found.\n": "未找到 clangd 二进制文件 '{path}'。\n",
+  "Would you like to download and install clangd {version}?": "您想要下载并安装 clangd {version} 吗？",
+  "No, never": "不，永不",
+  "Yes": "是",
+  "Yes, always": "是，始终如此",
+  "clangd configuration file at '{fsPath}' has been changed. Do you want to restart it?": "位于 '{fsPath}' 的 clangd 配置文件已更改。您是否要重新启动？",
+  "No AST node at selection": "选择项没有 AST 节点",
+  "You have both the Microsoft C++ (cpptools) extension and clangd extension enabled. The Microsoft IntelliSense features conflict with clangd's code completion, diagnostics etc.":
+  "您同时启用了 Microsoft C++(cpptools) 扩展和 clangd 扩展。Microsoft IntelliSense 功能与 clangd 的代码补全、诊断等功能存在冲突。",
+  "Disable IntelliSense": "禁用 IntelliSense",
+  "Never show this warning": "永不显示此警告"
+}
