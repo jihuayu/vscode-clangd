@@ -134,4 +134,8 @@ class UI {
   set clangdPath(p: string) {
     config.update('path', p, vscode.ConfigurationTarget.Global);
   }
+
+  localize(message: string, ...args: string[]): string {
+    return vscode.l10n.t(message, args)
+  }
 }
