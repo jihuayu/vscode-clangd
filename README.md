@@ -121,4 +121,4 @@ If you've found a bug in clangd, please file at https://github.com/clangd/clangd
 
 Clangd has used VS Code native l10n API. You can contribute according to [VS Code doc](https://github.com/microsoft/vscode-l10n?tab=readme-ov-file#vscodel10n).
 
-We make a script to help you export l10n strings. You can run `node ./script/x.py <lang>` to generate your localization file easier. 
+We make a script to help you export l10n strings. You can run `node ./script/x.py <lang>` after build the project to generate your localization file easier. 

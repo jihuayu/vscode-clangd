@@ -1,7 +1,8 @@
 const fs = require('fs');
 
 if (process.argv.length < 3) {
-  console.log(`Usage: node x.js <lang>`);
+  console.log('Usage: node x.js <lang>');
+  console.log('You need run this script after build the project');
   process.exit(1);
 }
 
