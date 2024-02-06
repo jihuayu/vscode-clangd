@@ -67,7 +67,7 @@ export function activate(context: ClangdContext) {
           openConfigFile(vscode.Uri.file(file));
         } else {
           vscode.window.showErrorMessage(
-            vscode.l10n.t('Couldn\'t get global configuration directory'));
+              vscode.l10n.t('Couldn\'t get global configuration directory'));
         }
       }));
 }

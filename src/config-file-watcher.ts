@@ -93,7 +93,9 @@ class ConfigFileWatcher implements vscode.Disposable {
       const never = vscode.l10n.t('No, never')
 
       switch (await vscode.window.showInformationMessage(
-          vscode.l10n.t(`Clangd configuration file at '{0}' has been changed. Do you want to restart it?`, uri.fsPath),
+          vscode.l10n.t(
+              `Clangd configuration file at '{0}' has been changed. Do you want to restart it?`,
+              uri.fsPath),
           yes, always, never)) {
       case yes:
         vscode.commands.executeCommand('clangd.restart');
