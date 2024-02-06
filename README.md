@@ -116,3 +116,9 @@ If you'd like to help out, reach out to clangd-dev@lists.llvm.org.
 
 If you've found a bug in this extension, please file it at https://github.com/clangd/vscode-clangd/issues.
 If you've found a bug in clangd, please file at https://github.com/clangd/clangd/issues.
+
+## l10n
+
+Clangd has used VS Code native l10n API. You can contribute according to [VS Code doc](https://github.com/microsoft/vscode-l10n?tab=readme-ov-file#vscodel10n).
+
+We make a script to help you export l10n strings. You can run `node ./script/x.py <lang>` to generate your localization file easier. 
