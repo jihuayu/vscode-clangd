@@ -68,7 +68,7 @@ class UI {
   }
 
   async shouldReuse(release: string): Promise<boolean|undefined> {
-    const message = vscode.l10n.t(`clangd {0} is already installed!`, release);
+    const message = vscode.l10n.t('clangd {0} is already installed!', release);
     const use = vscode.l10n.t('Use the installed version');
     const reinstall = vscode.l10n.t('Delete it and reinstall');
     const response =
@@ -100,9 +100,9 @@ class UI {
   async promptUpdate(oldVersion: string, newVersion: string) {
     const message =
         vscode.l10n.t('An updated clangd language server is available.') + '\n'
-    vscode.l10n.t(`Would you like to upgrade to clangd {0}? (from {1})`,
+    vscode.l10n.t('Would you like to upgrade to clangd {0}? (from {1})',
                   newVersion, oldVersion)
-    const update = vscode.l10n.t(`Install clangd {0}`, newVersion);
+    const update = vscode.l10n.t('Install clangd {0}', newVersion);
     const dontCheck = vscode.l10n.t('Don\'t ask again');
     const response =
         await vscode.window.showInformationMessage(message, update, dontCheck);
@@ -118,14 +118,14 @@ class UI {
     let message = '';
     if (p.indexOf(path.sep) < 0) {
       message += vscode.l10n.t(
-          `The '{0}' language server was not found on your PATH.`, p);
+          'The {0} language server was not found on your PATH.', p);
     } else {
       message += vscode.l10n.t(`The clangd binary '{0}' was not found.`, p);
     }
     // vscode l10n dont support \n, so we have to do it manually.
     message += '\n';
     message += vscode.l10n.t(
-        `Would you like to download and install clangd {0}?`, version);
+        'Would you like to download and install clangd {0}?', version);
     if (await vscode.window.showInformationMessage(message, 'Install'))
       common.installLatest(this);
   }
