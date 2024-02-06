@@ -118,9 +118,9 @@ class UI {
     let message = '';
     if (p.indexOf(path.sep) < 0) {
       message += vscode.l10n.t(
-          'The {0} language server was not found on your PATH.', p);
+          'The \'{0}\' language server was not found on your PATH.', p);
     } else {
-      message += vscode.l10n.t(`The clangd binary '{0}' was not found.`, p);
+      message += vscode.l10n.t('The clangd binary \'{0}\' was not found.', p);
     }
     // vscode l10n dont support \n, so we have to do it manually.
     message += '\n';
